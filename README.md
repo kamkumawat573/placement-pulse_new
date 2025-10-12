@@ -69,13 +69,11 @@ NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
 RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
    RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 
-   # reCAPTCHA Configuration
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-recaptcha-site-key
-RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
+
 
    # Admin Configuration
 ADMIN_NAME=Admin User
-   ADMIN_EMAIL=admin@placementpulse.com
+   ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=your_secure_admin_password
 ADMIN_ROLE=admin
    
@@ -131,7 +129,7 @@ The platform is fully responsive and optimized for:
 
 ## 💳 Payment Integration
 
-- **Razorpay Integration**: Secure payment processing
+- **Cashfree Integration**: Secure payment processing
 - **Test Mode**: Safe testing environment
 - **Payment Verification**: Server-side verification
 - **Transaction Tracking**: Complete payment history
