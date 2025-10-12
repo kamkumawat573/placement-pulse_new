@@ -8,9 +8,9 @@ async function getBlog(id: string) {
   await connectToDatabase()
   // Try by ObjectId first; fall back to blogId string
   const byId = await BlogModel.findById(id).lean().catch(() => null as any)
-  if (byId && (byId.isVisible !== false)) return byId
+  if (byId && ((byId as any).isVisible !== false)) return byId
   const byBlogId = await BlogModel.findOne({ blogId: id }).lean()
-  if (byBlogId && (byBlogId.isVisible !== false)) return byBlogId
+  if (byBlogId && ((byBlogId as any).isVisible !== false)) return byBlogId
   return null
 }
 

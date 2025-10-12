@@ -66,16 +66,16 @@ export async function PUT(
     if (category !== undefined) topic.category = category.trim()
     if (difficulty !== undefined) topic.difficulty = difficulty
     if (tags !== undefined) {
-      topic.tags = Array.isArray(tags) ? tags : (tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [])
+      topic.tags = Array.isArray(tags) ? tags : (tags ? tags.split(',').map((t: string) => t.trim()).filter((t: string) => t) : [])
     }
     if (discussionPoints !== undefined) {
-      topic.discussionPoints = Array.isArray(discussionPoints) ? discussionPoints : (discussionPoints ? discussionPoints.split('\n').map(p => p.trim()).filter(p => p) : [])
+      topic.discussionPoints = Array.isArray(discussionPoints) ? discussionPoints : (discussionPoints ? discussionPoints.split('\n').map((p: string) => p.trim()).filter((p: string) => p) : [])
     }
     if (tips !== undefined) {
-      topic.tips = Array.isArray(tips) ? tips : (tips ? tips.split('\n').map(t => t.trim()).filter(t => t) : [])
+      topic.tips = Array.isArray(tips) ? tips : (tips ? tips.split('\n').map((t: string) => t.trim()).filter((t: string) => t) : [])
     }
     if (relatedTopics !== undefined) {
-      topic.relatedTopics = Array.isArray(relatedTopics) ? relatedTopics : (relatedTopics ? relatedTopics.split(',').map(t => t.trim()).filter(t => t) : [])
+      topic.relatedTopics = Array.isArray(relatedTopics) ? relatedTopics : (relatedTopics ? relatedTopics.split(',').map((t: string) => t.trim()).filter((t: string) => t) : [])
     }
     if (imageUrl !== undefined) topic.imageUrl = imageUrl.trim()
     if (typeof isActive === 'boolean') topic.isActive = isActive

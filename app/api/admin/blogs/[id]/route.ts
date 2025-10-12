@@ -70,8 +70,8 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     }
 
     // Process tags
-    const processedTags = tags ? 
-      (Array.isArray(tags) ? tags : tags.split(',').map(tag => tag.trim()).filter(tag => tag)) 
+    const processedTags = tags ?
+      (Array.isArray(tags) ? tags : tags.split(',').map((tag: string) => tag.trim()).filter((tag: string) => tag))
       : []
 
     // Update blog
