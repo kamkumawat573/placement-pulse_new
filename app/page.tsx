@@ -659,7 +659,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
             {[
-              { icon: Users, value: "1,500+", label: "MBA Students Enrolled" },
+              { icon: Users, value: "300+", label: "MBA Students Enrolled" },
               { icon: Clock, value: "60+", label: "Hours of MBA Content" },
               { icon: Award, value: "95%", label: "Placement Success Rate" },
               { icon: Star, value: "4.9/5", label: "Student Rating" },
@@ -947,15 +947,7 @@ export default function HomePage() {
               >
                 <Instagram className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
-              <a 
-                href="https://linkedin.com/company/placementpulse" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
-              </a>
+              
             </div>
             
             <div className="text-muted-foreground mb-2">
