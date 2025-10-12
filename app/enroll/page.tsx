@@ -270,9 +270,10 @@ export default function EnrollPage() {
       if (!orderRes.ok) throw new Error("Failed to create order")
       const order = await orderRes.json()
 
-      // Initialize CashFree
+      // Initialize CashFree with environment aligned to server
+      const cfMode = (process.env.NEXT_PUBLIC_CASHFREE_ENVIRONMENT || 'sandbox') === 'production' ? 'production' : 'sandbox'
       const cashfree = (window as any).Cashfree({
-        mode: process.env.NODE_ENV === 'production' ? 'production' : 'sandbox'
+        mode: cfMode
       })
 
       // Store courseId and order info in localStorage for auto-enrollment after payment

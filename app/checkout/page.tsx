@@ -155,9 +155,11 @@ export default function CheckoutPage() {
       localStorage.setItem('lastCourseIds', JSON.stringify(items.map(c => c.id)))
       localStorage.setItem('pendingEnrollment', JSON.stringify(enrollmentData))
 
-      // Initialize CashFree
+      // Initialize CashFree with environment aligned to server
+      // Use NEXT_PUBLIC_CASHFREE_ENVIRONMENT so prod can still run in sandbox if desired
+      const cfMode = (process.env.NEXT_PUBLIC_CASHFREE_ENVIRONMENT || 'sandbox') === 'production' ? 'production' : 'sandbox'
       const cashfree = (window as any).Cashfree({
-        mode: process.env.NODE_ENV === 'production' ? 'production' : 'sandbox'
+        mode: cfMode
       })
 
       // Open CashFree checkout
