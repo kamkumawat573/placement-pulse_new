@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -24,6 +25,7 @@ export default function EnrollPage() {
   const [coursePrice, setCoursePrice] = useState(0) // Will be updated from API
   const [courseId, setCourseId] = useState("") // Store actual course ID
   const [courseDataLoaded, setCourseDataLoaded] = useState(false)
+  const [termsAccepted, setTermsAccepted] = useState(false)
   const [courseInfo, setCourseInfo] = useState({
     title: "MBA Placement Mastery Program",
     description: "Master Group Discussions, Interviews, and Placement Strategies with expert guidance from MBA alumni",
@@ -459,8 +461,36 @@ export default function EnrollPage() {
                       <span>{courseDataLoaded ? `₹${courseInfo.price}.00` : 'Loading...'}</span>
                     </div>
                   </div>
+
+                  {/* Terms and Conditions */}
+                  <div className="border-t pt-4">
+                    <div className="flex items-start gap-3 p-4 bg-muted/30 rounded-lg">
+                      <input
+                        type="checkbox"
+                        id="terms-checkbox-enroll"
+                        checked={termsAccepted}
+                        onChange={(e) => setTermsAccepted(e.target.checked)}
+                        className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer"
+                      />
+                      <label htmlFor="terms-checkbox-enroll" className="text-sm text-muted-foreground cursor-pointer flex-1">
+                        I agree to the{" "}
+                        <Link href="/terms-conditions" target="_blank" className="text-primary hover:underline font-medium">
+                          Terms and Conditions
+                        </Link>
+                        {" "}and understand that{" "}
+                        <strong className="text-destructive">all course payments are FINAL and NON-REFUNDABLE</strong>. 
+                        By proceeding, I acknowledge that I have read and accepted that{" "}
+                        <strong className="text-destructive">NO REFUNDS or CANCELLATIONS</strong> will be provided under any circumstances.
+                      </label>
+                    </div>
+                    {!termsAccepted && (
+                      <p className="text-xs text-muted-foreground mt-2 ml-7">
+                        ⚠️ You must accept the terms and conditions to proceed with payment
+                      </p>
+                    )}
+                  </div>
 {/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-                  <Button onClick={handleEnrollment} disabled={processing || !courseDataLoaded} className="w-full mt-2" size="lg">
+                  <Button onClick={handleEnrollment} disabled={processing || !courseDataLoaded || !termsAccepted} className="w-full mt-2" size="lg">
                     {processing ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
