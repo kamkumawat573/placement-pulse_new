@@ -8,12 +8,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Play, Clock, Users, Award, Star, CheckCircle, Youtube, Instagram, Linkedin } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "@/contexts/auth-context"
+import { useRouter } from "next/navigation"
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null)
   const videoSectionRef = useRef<HTMLElement>(null)
   const authContext = useAuth()
   const user = authContext?.user || null
+  const router = useRouter()
+  const [isNavigating, setIsNavigating] = useState(false)
   const [notifications, setNotifications] = useState<Array<{
     id: string;
     type: string;
@@ -82,6 +85,12 @@ export default function HomePage() {
         block: 'start'
       })
     }
+  }
+
+  const handlePrivacyPolicyClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    setIsNavigating(true)
+    router.push('/privacy-policy')
   }
 
   useEffect(() => {
@@ -190,6 +199,38 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
+      {/* Loading Skeleton Overlay */}
+      {isNavigating && (
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="w-full max-w-4xl mx-auto px-4">
+            <div className="bg-card rounded-lg shadow-xl p-8 animate-pulse">
+              {/* Header skeleton */}
+              <div className="h-12 bg-muted rounded-lg mb-6"></div>
+              
+              {/* Content skeleton */}
+              <div className="space-y-4">
+                <div className="h-4 bg-muted rounded w-3/4"></div>
+                <div className="h-4 bg-muted rounded w-full"></div>
+                <div className="h-4 bg-muted rounded w-5/6"></div>
+                <div className="h-4 bg-muted rounded w-full"></div>
+                <div className="h-4 bg-muted rounded w-2/3"></div>
+              </div>
+              
+              {/* Sections skeleton */}
+              <div className="mt-8 space-y-6">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="space-y-3">
+                    <div className="h-6 bg-muted rounded w-1/2"></div>
+                    <div className="h-4 bg-muted rounded w-full"></div>
+                    <div className="h-4 bg-muted rounded w-4/5"></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-24 lg:pt-28">
         <div
@@ -964,8 +1005,21 @@ export default function HomePage() {
               </p>
             </div>
             
-            <div className="text-muted-foreground">
+            <div className="text-muted-foreground mb-4">
               <p className="text-xs sm:text-sm">&copy; 2025 Placement Pulse. All rights reserved.</p>
+            </div>
+
+            <div className="pt-4 border-t border-border/30">
+              <nav className="flex items-center justify-center gap-6">
+                <a 
+                  href="/privacy-policy" 
+                  onClick={handlePrivacyPolicyClick}
+                  className="text-sm sm:text-base font-semibold text-foreground hover:text-primary hover:underline transition-colors duration-200 flex items-center gap-2 cursor-pointer"
+                >
+                  <span className="hidden sm:inline">🔒</span>
+                  Privacy Policy
+                </a>
+              </nav>
             </div>
           </div>
         </div>
