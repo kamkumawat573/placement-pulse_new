@@ -477,10 +477,10 @@ export default function EnrollPage() {
                         <Link href="/terms-conditions" target="_blank" className="text-primary hover:underline font-medium">
                           Terms and Conditions
                         </Link>
-                        {" "}and understand that{" "}
+                        {/* {" "}and understand that{" "}
                         <strong className="text-destructive">all course payments are FINAL and NON-REFUNDABLE</strong>. 
                         By proceeding, I acknowledge that I have read and accepted that{" "}
-                        <strong className="text-destructive">NO REFUNDS or CANCELLATIONS</strong> will be provided under any circumstances.
+                        <strong className="text-destructive">NO REFUNDS or CANCELLATIONS</strong> will be provided under any circumstances. */}
                       </label>
                     </div>
                     {!termsAccepted && (
