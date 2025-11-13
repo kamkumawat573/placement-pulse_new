@@ -1,11 +1,27 @@
+# robots.txt for Placement Pulse - MBA Placement Preparation Platform
+
+# Allow all search engines to crawl the site
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://yourdomain.com/sitemap.xml
+# Sitemap location
+Sitemap: https://placementpulse.com/sitemap.xml
 
-# Disallow admin and API routes
+# Block admin, API, and private routes
 Disallow: /admin/
+Disallow: /admin-setup/
 Disallow: /api/
 Disallow: /dashboard/
-Disallow: /auth/
+Disallow: /checkout/
+Disallow: /enroll/
+Disallow: /payment/
+
+# Allow authentication pages for better indexing
+Allow: /auth/
+
+# Block specific files
+Disallow: /*.json$
+Disallow: /*.env$
+
+# Crawl-delay (optional, only if needed)
+# Crawl-delay: 1
