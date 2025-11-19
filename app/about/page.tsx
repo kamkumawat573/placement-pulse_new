@@ -48,15 +48,16 @@ export default function AboutPage() {
       subtitle: "",
       image: "./gaurav.jpg",
       linkedinUrl: "https://linkedin.com/in/gaurav-shukla-58b436178"
-    },
-    {
-      id: 4,
-      name: "Mukul Singh",
-      title: "Co-Founder",
-      subtitle: "",
-      image: "./mukul.jpg",
-      linkedinUrl: "https://linkedin.com/in/mukul-singh-13655837a"
     }
+    // ,
+    // {
+    //   id: 4,
+    //   name: "Mukul Singh",
+    //   title: "Co-Founder",
+    //   subtitle: "",
+    //   image: "./mukul.jpg",
+    //   linkedinUrl: "https://linkedin.com/in/mukul-singh-13655837a"
+    // }
   ]
 // ----------------------------------------------------------------------------------------------------------------------
   useEffect(() => {
