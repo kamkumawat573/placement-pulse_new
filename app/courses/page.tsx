@@ -581,7 +581,7 @@ export default function CoursesPage() {
             {[
               { label: 'No. of Interview', left: '1', right: '3', type: 'text' },
               { label: 'No. of Group Discussions', left: "X", right: '1', type: 'text' },
-              { label: 'CV Curation', left: false, right: true, type: 'bool' },
+              { label: 'CV Curation Help', left: false, right: true, type: 'bool' },
               { label: 'Feedback on Interview', left: true, right: true, type: 'bool' },
               { label: 'Recording of Interview', left: false, right: true, type: 'bool' }
             ].map((row, idx) => (
@@ -666,7 +666,7 @@ export default function CoursesPage() {
                       <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
                         <CheckCircle2 className="h-3.5 w-3.5" />
                       </span>
-                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">1:1 CV Curation</span>
+                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">CV Curation Help</span>
                     </div>
                     <div className="flex items-center gap-2 rounded-md bg-sky-50/80 dark:bg-sky-950/30 border border-sky-100/80 dark:border-sky-900/40 px-2.5 py-1.5 shadow-sm">
                       <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
