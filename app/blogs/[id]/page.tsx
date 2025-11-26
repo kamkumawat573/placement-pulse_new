@@ -4,6 +4,26 @@ import { BlogModel } from "@/lib/models/Blog"
 
 export const revalidate = 0
 
+// Function to parse text and highlight content between ***
+function parseHighlightedText(text: string) {
+  const parts = text.split(/(\*\*\*.*?\*\*\*)/g)
+  return parts.map((part, index) => {
+    // Check if this part is between *** markers
+    if (part.startsWith('***') && part.endsWith('***')) {
+      const content = part.slice(3, -3) // Remove the *** markers
+      return (
+        <span 
+          key={index} 
+          className="font-bold"
+        >
+          {content}
+        </span>
+      )
+    }
+    return part
+  }).filter(part => part !== '' && part !== '***')
+}
+
 async function getBlog(id: string) {
   await connectToDatabase()
   // Try by ObjectId first; fall back to blogId string
@@ -56,7 +76,7 @@ export default async function BlogDetailPage({ params }: { params: { id: string 
           {blog.content ? (
             <article className="prose dark:prose-invert max-w-none">
               <p className="whitespace-pre-wrap leading-7 text-gray-800 dark:text-gray-200">
-                {blog.content}
+                {parseHighlightedText(blog.content)}
               </p>
             </article>
           ) : (
