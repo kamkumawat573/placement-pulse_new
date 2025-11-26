@@ -4,6 +4,26 @@ import GDTopic from "@/lib/models/GDTopic"
 
 export const revalidate = 0
 
+// Function to parse text and highlight content between ***
+function parseHighlightedText(text: string) {
+  const parts = text.split(/(\*\*\*.*?\*\*\*)/g)
+  return parts.map((part, index) => {
+    // Check if this part is between *** markers
+    if (part.startsWith('***') && part.endsWith('***')) {
+      const content = part.slice(3, -3) // Remove the *** markers
+      return (
+        <span 
+          key={index} 
+          className="font-bold"
+        >
+          {content}
+        </span>
+      )
+    }
+    return part
+  }).filter(part => part !== '' && part !== '***')
+}
+
 async function getTopic(id: string) {
   await connectToDatabase()
   const topic = await GDTopic.findById(id).lean().catch(() => null as any)
@@ -59,7 +79,9 @@ export default async function TopicDetailPage({ params }: { params: { id: string
           {/* Description */}
           <section className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Overview</h2>
-            <p className="text-gray-800 dark:text-gray-200 leading-7 whitespace-pre-wrap">{topic.description}</p>
+            <p className="text-gray-800 dark:text-gray-200 leading-7 whitespace-pre-wrap">
+              {parseHighlightedText(topic.description)}
+            </p>
           </section>
 
           {/* Discussion Points */}
@@ -68,7 +90,7 @@ export default async function TopicDetailPage({ params }: { params: { id: string
               <h2 className="text-xl font-semibold mb-2">Key Discussion Points</h2>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {topic.discussionPoints.map((p: string, idx: number) => (
-                  <li key={idx}>{p}</li>
+                  <li key={idx}>{parseHighlightedText(p)}</li>
                 ))}
               </ul>
             </section>
@@ -80,7 +102,7 @@ export default async function TopicDetailPage({ params }: { params: { id: string
               <h2 className="text-xl font-semibold mb-2">Tips</h2>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {topic.tips.map((t: string, idx: number) => (
-                  <li key={idx}>{t}</li>
+                  <li key={idx}>{parseHighlightedText(t)}</li>
                 ))}
               </ul>
             </section>
