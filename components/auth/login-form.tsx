@@ -60,7 +60,7 @@ export function LoginForm({ onToggleMode, onSuccess }: LoginFormProps) {
       if (success) {
         onSuccess()
       } else {
-        setError("Invalid credentials. Try student@example.com with any password.")
+        setError("Invalid credentials.")
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -151,13 +151,13 @@ export function LoginForm({ onToggleMode, onSuccess }: LoginFormProps) {
             Sign up
           </button>
         </div>
-        <div className="mt-4 p-3 bg-muted rounded-md text-sm text-muted-foreground">
+        {/* <div className="mt-4 p-3 bg-muted rounded-md text-sm text-muted-foreground">
           <strong>Demo credentials:</strong>
           <br />
           Email: student@example.com
           <br />
           Password: any password
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   )
