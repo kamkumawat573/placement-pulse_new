@@ -563,127 +563,314 @@ export default function CoursesPage() {
           </div>
         </div>
       </section>
-      {/* Comparison Section (Plans) moved to bottom */}
-      <section className="py-10 sm:py-14">
+      {/* Pricing Cards Section */}
+      <section className="py-10 sm:py-14 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm bg-white">
-            {/* Header Row */}
-            <div className="grid grid-cols-3 bg-slate-800 text-white text-xs sm:text-sm">
-              <div className="px-3 sm:px-4 py-3 font-semibold uppercase tracking-wide text-center">Features</div>
-              <div className="px-3 sm:px-4 py-3 font-semibold text-center">1:1 Mock Interview
-                <div className="text-[10px] sm:text-xs opacity-90">₹ 99/-</div>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-3 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+              Our Pricing Plans
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">Choose the plan that best fits your career goals</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {/* Card 1: 1:1 Mock Interview */}
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100">
+              <div className="text-center mb-4">
+                <p className="text-xs uppercase tracking-wider text-gray-600 mb-2">1:1 MOCK INTERVIEW</p>
+                <div className="text-5xl font-bold text-gray-900">₹299</div>
               </div>
-              <div className="px-3 sm:px-4 py-3 font-semibold text-center">GD-PI Prep Course
-                <div className="text-[10px] sm:text-xs opacity-90">₹ 999/-</div>
+              
+              <div className="space-y-3 mb-6">
+                <h3 className="font-bold text-gray-900 mb-3">Start Strong. Improve Fast.</h3>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">30-minute 1:1 mock interview with 2-3 experts</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">HR + Technical mix customised to your role</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Detailed evaluation on structure, clarity, and content</span>
+                </div>
+              </div>
+
+              <div className="text-xs text-gray-600 italic bg-white/60 p-3 rounded-lg">
+                Perfect for quick revision before interview, MBA PI, domain change, or job switch.
               </div>
             </div>
 
-            {[
-              { label: 'No. of Interview', left: '1', right: '3', type: 'text' },
-              { label: 'No. of Group Discussions', left: "X", right: '1', type: 'text' },
-              { label: 'CV Curation Help', left: false, right: true, type: 'bool' },
-              { label: 'Feedback on Interview', left: true, right: true, type: 'bool' },
-              { label: 'Recording of Interview', left: false, right: true, type: 'bool' }
-            ].map((row, idx) => (
-              <div key={idx} className={`grid grid-cols-3 text-xs sm:text-sm ${idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                <div className="px-3 sm:px-4 py-3 border-t border-gray-200 font-medium text-gray-700">{row.label}</div>
-                <div className="px-3 sm:px-4 py-3 border-t border-gray-200 text-center">
-                  {row.type === 'bool' ? (
-                    row.left ? (
-                      <span aria-label="Yes" className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-white">✓</span>
-                    ) : (
-                      <span aria-label="No" className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white">✕</span>
-                    )
-                  ) : (
-                    row.left === 'X' ? (
-                      <span aria-label="No" className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white">✕</span>
-                    ) : (
-                      <span className="font-semibold text-slate-800">{row.left}</span>
-                    )
-                  )}
-                </div>
-                <div className="px-3 sm:px-4 py-3 border-t border-gray-200 text-center">
-                  {row.type === 'bool' ? (
-                    row.right ? (
-                      <span aria-label="Yes" className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-white">✓</span>
-                    ) : (
-                      <span aria-label="No" className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white">✕</span>
-                    )
-                  ) : (
-                    row.right === 'X' ? (
-                      <span aria-label="No" className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white">✕</span>
-                    ) : (
-                      <span className="font-semibold text-slate-800">{row.right}</span>
-                    )
-                  )}
-                </div>
+            {/* Card 2: Advanced CV Curation */}
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100">
+              <div className="text-center mb-4">
+                <p className="text-xs uppercase tracking-wider text-gray-600 mb-2">ADVANCED CV CURATION</p>
+                <div className="text-5xl font-bold text-gray-900">₹499</div>
               </div>
-            ))}
-
-            {/* Core feature lists */}
-            <div className="grid grid-cols-3 text-xs sm:text-sm">
-              <div className="px-3 sm:px-4 py-3 border-t border-gray-200 font-semibold text-gray-700">Core Features</div>
-              <div className="px-3 sm:px-4 py-3 border-t border-gray-200 text-gray-700">
-                <div className="flex justify-center">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 rounded-md bg-sky-50/80 dark:bg-sky-950/30 border border-sky-100/80 dark:border-sky-900/40 px-2.5 py-1.5 shadow-sm">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">1:1 Personal Interview</span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-md bg-sky-50/80 dark:bg-sky-950/30 border border-sky-100/80 dark:border-sky-900/40 px-2.5 py-1.5 shadow-sm">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">Feedback for improvement</span>
-                    </div>
-                  </div>
+              
+              <div className="space-y-3 mb-6">
+                <h3 className="font-bold text-gray-900 mb-3">Professional, ATS-Approved, Role-Specific CV</h3>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">CV built from scratch by our expert team</span>
                 </div>
-              </div>
-              <div className="px-3 sm:px-4 py-3 border-t border-gray-200 text-gray-700">
-                <div className="flex justify-center">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 rounded-md bg-sky-50/80 dark:bg-sky-950/30 border border-sky-100/80 dark:border-sky-900/40 px-2.5 py-1.5 shadow-sm">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">1:1 Personal Interview (3)</span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-md bg-sky-50/80 dark:bg-sky-950/30 border border-sky-100/80 dark:border-sky-900/40 px-2.5 py-1.5 shadow-sm">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">Feedback for improvement</span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-md bg-sky-50/80 dark:bg-sky-950/30 border border-sky-100/80 dark:border-sky-900/40 px-2.5 py-1.5 shadow-sm">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">1 Group Discussion</span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-md bg-sky-50/80 dark:bg-sky-950/30 border border-sky-100/80 dark:border-sky-900/40 px-2.5 py-1.5 shadow-sm">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">CV Curation Help</span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-md bg-sky-50/80 dark:bg-sky-950/30 border border-sky-100/80 dark:border-sky-900/40 px-2.5 py-1.5 shadow-sm">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-white">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-slate-800 dark:text-slate-200 text-[13px]">Detailed Analysis of PI</span>
-                    </div>
-                  </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Premium templates shared for selection</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">2 personalised CV curation sessions</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Keyword-optimised + clean formatting</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Ready for ATS screening across job portals</span>
                 </div>
               </div>
             </div>
 
-            {/* Footer (no buttons as requested) */}
-            <div className="grid grid-cols-3">
-              <div className="px-3 sm:px-4 py-3 bg-white" />
-              <div className="px-3 sm:px-4 py-3" />
-              <div className="px-3 sm:px-4 py-3" />
+            {/* Card 3: Complete Interview Prep */}
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-white">
+              <div className="text-center mb-4">
+                <p className="text-xs uppercase tracking-wider text-blue-100 mb-2">COMPLETE INTERVIEW PREP</p>
+                <div className="text-5xl font-bold">₹1999</div>
+              </div>
+              
+              <div className="space-y-3 mb-6">
+                <h3 className="font-bold mb-3">From Beginner to Interview-Ready</h3>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>4 mock interviews: Beginner → Intermediate → Advanced → Final Simulation</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>HR + Technical blend tailored to your specific domain</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>1 dedicated curation session (ATS-friendly, role-specific)</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Mock interview recordings provided</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Detailed written analysis by industry experts</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Full interview roadmap for your target roles</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4: LinkedIn + Career Accelerator Bundle */}
+            <div className="bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-white">
+              <div className="text-center mb-4">
+                <p className="text-xs uppercase tracking-wider text-blue-100 mb-2">LINKEDIN + CAREER ACCELERATOR BUNDLE</p>
+                <div className="text-5xl font-bold">₹3499</div>
+              </div>
+              
+              <div className="space-y-3 mb-4">
+                <h3 className="font-bold mb-3">LinkedIn Optimization (Full Makeover)</h3>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>About section rewrite</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Experience + Key achievements optimization</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Skills + endorsements structuring</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Featured media, certifications, and portfolio addition</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Recommendations strategy</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Job strategy & LinkedIn search framework</span>
+                </div>
+
+                <h3 className="font-bold mt-4 mb-2">Advanced CV Curation (Built by Team)</h3>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Professionally crafted CV from scratch</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>ATS-friendly formatting</span>
+                </div>
+                <div className="flex items-start gap-2 text-sm">
+                  <CheckCircle2 className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
+                  <span>Industry-specific keyword strategy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section (Plans) - New 4-Column Design */}
+      <section className="py-10 sm:py-14 bg-gradient-to-br from-blue-50 via-purple-50/30 to-blue-50/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+              Features / Courses
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 px-4">Choose the perfect plan for your placement preparation</p>
+          </div>
+          
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <div className="inline-block min-w-full align-middle px-4 sm:px-0">
+              <div className="min-w-[800px] bg-white rounded-lg sm:rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+              {/* Header Row */}
+              <div className="grid grid-cols-5 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white">
+                <div className="px-2 sm:px-4 py-4 sm:py-6 font-semibold text-left border-r border-blue-500/30">
+                  <div className="text-[10px] sm:text-sm opacity-90">Features / Courses</div>
+                </div>
+                <div className="px-2 sm:px-4 py-4 sm:py-6 text-center border-r border-blue-500/30">
+                  <div className="font-bold text-xs sm:text-lg mb-1">Mock Interview</div>
+                  <div className="text-lg sm:text-2xl font-bold">₹299</div>
+                </div>
+                <div className="px-2 sm:px-4 py-4 sm:py-6 text-center border-r border-blue-500/30">
+                  <div className="font-bold text-xs sm:text-lg mb-1">5-Session Program</div>
+                  <div className="text-lg sm:text-2xl font-bold">₹1999</div>
+                </div>
+                <div className="px-2 sm:px-4 py-4 sm:py-6 text-center border-r border-blue-500/30">
+                  <div className="font-bold text-xs sm:text-lg mb-1">Advanced CV</div>
+                  <div className="text-lg sm:text-2xl font-bold">₹499</div>
+                </div>
+                <div className="px-2 sm:px-4 py-4 sm:py-6 text-center">
+                  <div className="font-bold text-xs sm:text-lg mb-1">Career Accelerator</div>
+                  <div className="text-lg sm:text-2xl font-bold">₹3499</div>
+                </div>
+              </div>
+
+              {/* Feature Rows */}
+              {[
+                { 
+                  label: '1:1 Mock Interview', 
+                  col1: { type: 'text', value: '30 min' }, 
+                  col2: { type: 'check', value: true }, 
+                  col3: { type: 'dash', value: false }, 
+                  col4: { type: 'check', value: true }
+                },
+                { 
+                  label: 'HR + Technical Mix', 
+                  col1: { type: 'check', value: true }, 
+                  col2: { type: 'check', value: true }, 
+                  col3: { type: 'dash', value: false }, 
+                  col4: { type: 'check', value: true }
+                },
+                { 
+                  label: 'Detailed Analysis', 
+                  col1: { type: 'check', value: true }, 
+                  col2: { type: 'text', value: 'Written + Recorded' }, 
+                  col3: { type: 'check', value: true }, 
+                  col4: { type: 'check', value: true }
+                },
+                { 
+                  label: 'Interview Recordings', 
+                  col1: { type: 'dash', value: false }, 
+                  col2: { type: 'check', value: true }, 
+                  col3: { type: 'check', value: true }, 
+                  col4: { type: 'check', value: true }
+                },
+                { 
+                  label: 'CV Curation', 
+                  col1: { type: 'dash', value: false }, 
+                  col2: { type: 'text', value: 'Basic' }, 
+                  col3: { type: 'text', value: 'Advanced' }, 
+                  col4: { type: 'text', value: 'Advanced' }
+                },
+                { 
+                  label: 'CV Built From Scratch', 
+                  col1: { type: 'dash', value: false }, 
+                  col2: { type: 'dash', value: false }, 
+                  col3: { type: 'check', value: true }, 
+                  col4: { type: 'check', value: true }
+                },
+                { 
+                  label: 'LinkedIn Optimization', 
+                  col1: { type: 'dash', value: false }, 
+                  col2: { type: 'dash', value: false }, 
+                  col3: { type: 'dash', value: false }, 
+                  col4: { type: 'text', value: 'Complete' }
+                },
+                { 
+                  label: 'Templates Provided', 
+                  col1: { type: 'dash', value: false }, 
+                  col2: { type: 'dash', value: false }, 
+                  col3: { type: 'check', value: true }, 
+                  col4: { type: 'check', value: true }
+                },
+                { 
+                  label: 'Job & LinkedIn Strategy', 
+                  col1: { type: 'dash', value: false }, 
+                  col2: { type: 'dash', value: false }, 
+                  col3: { type: 'dash', value: false }, 
+                  col4: { type: 'check', value: true }
+                },
+                { 
+                  label: 'WhatsApp Support', 
+                  col1: { type: 'check', value: true }, 
+                  col2: { type: 'check', value: true }, 
+                  col3: { type: 'check', value: true }, 
+                  col4: { type: 'check', value: true }
+                }
+              ].map((row, idx) => (
+                <div key={idx} className={`grid grid-cols-5 ${idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                  <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-r border-gray-200 font-medium text-gray-700 text-[10px] sm:text-sm">
+                    {row.label}
+                  </div>
+                  {[row.col1, row.col2, row.col3, row.col4].map((cell, cellIdx) => (
+                    <div key={cellIdx} className={`px-2 sm:px-4 py-3 sm:py-4 border-t ${cellIdx < 3 ? 'border-r' : ''} border-gray-200 text-center`}>
+                      {cell.type === 'check' && cell.value && (
+                        <span className="inline-flex h-4 w-4 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-green-500 text-white text-xs sm:text-base">✓</span>
+                      )}
+                      {cell.type === 'dash' && !cell.value && (
+                        <span className="text-gray-400 text-lg sm:text-xl">–</span>
+                      )}
+                      {cell.type === 'text' && (
+                        <span className="text-[10px] sm:text-sm font-medium text-blue-600">{cell.value}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+
+              {/* Who Should Take Row */}
+              <div className="grid grid-cols-5 bg-gradient-to-r from-gray-50 to-gray-100">
+                <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-r border-gray-200 font-semibold text-gray-800 text-[10px] sm:text-sm">
+                  Who Should Take
+                </div>
+                <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-r border-gray-200 text-center text-[9px] sm:text-sm text-gray-700">
+                  Quick revision
+                </div>
+                <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-r border-gray-200 text-center text-[9px] sm:text-sm text-gray-700">
+                  Full interview prep
+                </div>
+                <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-r border-gray-200 text-center text-[9px] sm:text-sm text-gray-700">
+                  CV upgrade
+                </div>
+                <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-gray-200 text-center text-[9px] sm:text-sm text-gray-700">
+                  Total personal branding
+                </div>
+              </div>
+              </div>
             </div>
           </div>
         </div>
