@@ -192,7 +192,7 @@ export default function CoursesPage() {
       <section className="py-8 sm:py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {filteredCourses.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredCourses.map((course, index) => {
                 console.log('Rendering course:', course.id, course.title)
                 console.log('User enrolledCourses:', user?.enrolledCourses)
@@ -201,46 +201,49 @@ export default function CoursesPage() {
                 return (
                 <Card
                   key={course.id}
-                  className="group hover:shadow-xl transition-all duration-300 hover:scale-102 bg-white border border-gray-200 shadow-md hover:shadow-lg"
+                  className="group bg-white border border-gray-200 shadow-md flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-[2px] hover:border-transparent hover:bg-gradient-to-br hover:from-white hover:to-blue-50"
                 >
                   {(course.image || course.coverImage || course.imageUrl) && (
-                    <div className="relative overflow-hidden rounded-t-lg">
-                      <img
-                        src={course.image || course.coverImage || course.imageUrl}
-                        alt={course.title || course.caption}
-                        className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none'
-                        }}
-                      />
+                    <div className="relative overflow-hidden rounded-2xl">
+                      <div className="w-full aspect-[16/9] bg-gray-100">
+                        <img
+                          src={course.image || course.coverImage || course.imageUrl}
+                          alt={course.title || course.caption}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none'
+                          }}
+                        />
+                      </div>
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                       {course.discount && (
-                        <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                        <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-semibold shadow-sm">
                           {course.discount}
                         </div>
                       )}
                     </div>
                   )}
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-1 mb-2">
+                  <CardContent className="p-4 md:p-5 flex flex-col space-y-1.5">
+                    <div className="flex items-center gap-2">
                       {course.category && (
-                        <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-700 border-blue-200">
+                        <Badge variant="secondary" className="text-[11px] bg-blue-100 text-blue-700 border-blue-200 px-2 py-0.5 transition-colors duration-200 hover:bg-blue-200">
                           {course.category}
                         </Badge>
                       )}
                       {course.level && (
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-[11px] px-2 py-0.5 transition-colors duration-200 hover:bg-gray-100">
                           {course.level}
                         </Badge>
                       )}
                     </div>
 
-                    <h3 className="font-bold text-sm mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="font-semibold text-sm md:text-base leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors duration-300">
                       {course.title || course.caption}
                     </h3>
 
 
                         {Array.isArray(course.features) && course.features.length > 0 && (
-                          <div className="flex flex-wrap gap-1.5 mb-3">
+                          <div className="flex flex-wrap gap-1.5">
                             {course.features.map((feat, i) => (
                               <span key={i} className="inline-flex items-center gap-1 rounded-full bg-sky-50 dark:bg-sky-950/30 border border-sky-100 dark:border-sky-900/40 text-sky-700 dark:text-sky-300 px-2 py-0.5 text-[10px]">
                                 <CheckCircle2 className="h-3 w-3" />
@@ -251,23 +254,23 @@ export default function CoursesPage() {
                           </div>
                         )}
 
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1">
-                        <Star className="h-3 w-3 text-yellow-500 fill-current" />
+                        <Star className="h-3 w-3 text-yellow-500 fill-current transition-transform duration-200 group-hover:scale-110" />
                         <span className="text-xs font-medium">{course.rating || '4.8'}</span>
                         <span className="text-xs text-gray-500">({course.reviews || '35'})</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Users className="h-3 w-3 text-gray-400" />
+                        <Users className="h-3 w-3 text-gray-400 transition-transform duration-200 group-hover:scale-110" />
                         <span className="text-xs text-gray-500">{course.students || '300+'}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1">
-                        <span className="text-lg font-bold text-blue-600">₹{course.price ? (Number(course.price) / 100).toFixed(0) : 'Loading...'}</span>
+                        <span className="text-lg md:text-xl font-bold text-blue-600">₹{course.price ? (Number(course.price) / 100).toFixed(0) : 'Loading...'}</span>
                         {course.originalPrice && Number(course.originalPrice) > Number(course.price) && (
-                          <span className="text-sm text-gray-500 line-through">₹{(Number(course.originalPrice) / 100).toFixed(0)}</span>
+                          <span className="text-xs md:text-sm text-gray-500 line-through">₹{(Number(course.originalPrice) / 100).toFixed(0)}</span>
                         )}
                         {course.discount && (
                           <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">
@@ -277,17 +280,17 @@ export default function CoursesPage() {
                       </div>
                     </div>
 
-                    <div className="mt-3">
+                    <div className="mt-1 pt-0">
                       {course.enrollFormUrl ? (
                         <a href={course.enrollFormUrl} target="_blank" rel="noopener noreferrer">
-                          <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 text-sm">
+                          <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 text-sm">
                             <span>Enroll Now</span>
                             <ArrowRight className="ml-1 h-3 w-3" />
                           </Button>
                         </a>
                       ) : user?.enrolledCourses?.some((enrollment: any) => String(enrollment.courseId) === String(course.id)) ? (
                         <Link href="/dashboard">
-                          <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 text-sm">
+                          <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 px-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 text-sm">
                             <span>Continue Study</span>
                             <ArrowRight className="ml-1 h-3 w-3" />
                           </Button>
@@ -296,7 +299,7 @@ export default function CoursesPage() {
                         <div className="flex gap-2">
                           <Link href={user ? `/enroll?courseId=${course.id}` : "/auth?mode=signup"} className="flex-1">
                             <Button
-                              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 text-sm"
+                              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 text-sm"
                             >
                               <span>Enroll Now</span>
                               <ArrowRight className="ml-1 h-3 w-3" />
@@ -305,7 +308,7 @@ export default function CoursesPage() {
                           {(cart || []).includes(String(course.id)) ? (
                             <Button
                               variant="outline"
-                              className="w-28"
+                              className="w-24 sm:w-28 rounded-lg hover:border-blue-300 hover:text-blue-700"
                               onClick={(e) => { e.preventDefault(); removeFromCart(String(course.id)); }}
                             >
                               Remove
@@ -313,7 +316,7 @@ export default function CoursesPage() {
                           ) : (
                             <Button
                               variant="outline"
-                              className="w-28"
+                              className="w-24 sm:w-28 rounded-lg hover:border-blue-300 hover:text-blue-700"
                               onClick={(e) => { e.preventDefault(); addToCart(String(course.id)); }}
                             >
                               Add to Cart
@@ -746,12 +749,12 @@ export default function CoursesPage() {
                   <div className="text-lg sm:text-2xl font-bold">₹299</div>
                 </div>
                 <div className="px-2 sm:px-4 py-4 sm:py-6 text-center border-r border-blue-500/30">
-                  <div className="font-bold text-xs sm:text-lg mb-1">5-Session Program</div>
-                  <div className="text-lg sm:text-2xl font-bold">₹1999</div>
-                </div>
-                <div className="px-2 sm:px-4 py-4 sm:py-6 text-center border-r border-blue-500/30">
                   <div className="font-bold text-xs sm:text-lg mb-1">Advanced CV</div>
                   <div className="text-lg sm:text-2xl font-bold">₹499</div>
+                </div>
+                <div className="px-2 sm:px-4 py-4 sm:py-6 text-center border-r border-blue-500/30">
+                  <div className="font-bold text-xs sm:text-lg mb-1">5-Session Program</div>
+                  <div className="text-lg sm:text-2xl font-bold">₹1999</div>
                 </div>
                 <div className="px-2 sm:px-4 py-4 sm:py-6 text-center">
                   <div className="font-bold text-xs sm:text-lg mb-1">Career Accelerator</div>
@@ -764,22 +767,22 @@ export default function CoursesPage() {
                 { 
                   label: '1:1 Mock Interview', 
                   col1: { type: 'text', value: '30 min' }, 
-                  col2: { type: 'check', value: true }, 
-                  col3: { type: 'dash', value: false }, 
+                  col2: { type: 'dash', value: false }, 
+                  col3: { type: 'check', value: true }, 
                   col4: { type: 'check', value: true }
                 },
                 { 
                   label: 'HR + Technical Mix', 
                   col1: { type: 'check', value: true }, 
-                  col2: { type: 'check', value: true }, 
-                  col3: { type: 'dash', value: false }, 
+                  col2: { type: 'dash', value: false }, 
+                  col3: { type: 'check', value: true }, 
                   col4: { type: 'check', value: true }
                 },
                 { 
                   label: 'Detailed Analysis', 
                   col1: { type: 'check', value: true }, 
-                  col2: { type: 'text', value: 'Written + Recorded' }, 
-                  col3: { type: 'check', value: true }, 
+                  col2: { type: 'check', value: true }, 
+                  col3: { type: 'text', value: 'Written + Recorded' }, 
                   col4: { type: 'check', value: true }
                 },
                 { 
@@ -792,15 +795,15 @@ export default function CoursesPage() {
                 { 
                   label: 'CV Curation', 
                   col1: { type: 'dash', value: false }, 
-                  col2: { type: 'text', value: 'Basic' }, 
-                  col3: { type: 'text', value: 'Advanced' }, 
+                  col2: { type: 'text', value: 'Advanced' }, 
+                  col3: { type: 'text', value: 'Basic' }, 
                   col4: { type: 'text', value: 'Advanced' }
                 },
                 { 
                   label: 'CV Built From Scratch', 
                   col1: { type: 'dash', value: false }, 
-                  col2: { type: 'dash', value: false }, 
-                  col3: { type: 'check', value: true }, 
+                  col2: { type: 'check', value: true }, 
+                  col3: { type: 'dash', value: false }, 
                   col4: { type: 'check', value: true }
                 },
                 { 
@@ -813,8 +816,8 @@ export default function CoursesPage() {
                 { 
                   label: 'Templates Provided', 
                   col1: { type: 'dash', value: false }, 
-                  col2: { type: 'dash', value: false }, 
-                  col3: { type: 'check', value: true }, 
+                  col2: { type: 'check', value: true }, 
+                  col3: { type: 'dash', value: false }, 
                   col4: { type: 'check', value: true }
                 },
                 { 
@@ -861,10 +864,10 @@ export default function CoursesPage() {
                   Quick revision
                 </div>
                 <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-r border-gray-200 text-center text-[9px] sm:text-sm text-gray-700">
-                  Full interview prep
+                  CV upgrade
                 </div>
                 <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-r border-gray-200 text-center text-[9px] sm:text-sm text-gray-700">
-                  CV upgrade
+                  Full interview prep
                 </div>
                 <div className="px-2 sm:px-4 py-3 sm:py-4 border-t border-gray-200 text-center text-[9px] sm:text-sm text-gray-700">
                   Total personal branding
