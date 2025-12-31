@@ -17,7 +17,7 @@ export function WhatsAppFloat() {
   const handleWhatsAppClick = () => {
     // Replace with your actual WhatsApp number (include country code without + sign)
     const phoneNumber = "7073406229" // Example: "919876543210" for India
-    const message = "Hi! I'm interested in learning more about Placement Pulse MBA preparation courses."
+    const message = "Hi! I'm interested in learning more about Placement Pulse Interview preparation courses."
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
