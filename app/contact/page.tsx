@@ -112,7 +112,7 @@ export default function ContactPage() {
         break
       case 'Start Chat':
         // WhatsApp link - you can customize the message
-        const message = encodeURIComponent('Hello! I would like to get in touch about your services.')
+         const message = encodeURIComponent("Hi! I'm interested in learning more about Placement Pulse Interview preparation courses.")
         window.open(`https://wa.me/917073406229?text=${message}`, '_blank')
         break
       default:
