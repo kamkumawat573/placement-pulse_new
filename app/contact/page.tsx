@@ -113,7 +113,7 @@ export default function ContactPage() {
       case 'Start Chat':
         // WhatsApp link - you can customize the message
          const message = encodeURIComponent("Hi! I'm interested in learning more about Placement Pulse Interview preparation courses.")
-        window.open(`https://wa.me/917073406229?text=${message}`, '_blank')
+        window.open(`https://wa.me/917428569995?text=${message}`, '_blank')
         break
       default:
         break
@@ -133,7 +133,7 @@ export default function ContactPage() {
       icon: Phone,
       title: "Call Us",
       description: "Speak directly with our support team",
-      contact: "+91 7073406229",
+      contact: "+91 7428569995",
       action: "Call Now",
       color: "text-green-500",
     },
